@@ -6,7 +6,19 @@
 
     <div class="form-group">
       <label for="exampleInputEmail1">Name</label>
-      <input required [class.field-error]="form.submitted && nameField.invalid" #nameField="ngModel"   name="name" [(ngModel)]="UserSettings.name" type="text" class="form-control" id="exampleInputName" aria-describedby="emailHelp" placeholder="Name">
+      <input
+        (blur)="onBlur(nameField)"
+        required
+        [class.field-error]="form.submitted && nameField.invalid"
+        #nameField="ngModel"
+        name="name"
+        [(ngModel)]="UserSettings.name"
+        type="text"
+        class="form-control"
+        id="exampleInputName"
+        aria-describedby="emailHelp"
+        placeholder="Name"
+      >
       <div [hidden]="nameField.valid || !form.submitted" class="alert alert-danger">
         Enter a name
       </div>

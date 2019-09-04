@@ -10,8 +10,4 @@ export class EventThumbnailComponent implements OnInit {
 
   @Input() event: any;
   ngOnInit() {}
-
-  logFoo() {
-    console.log('this is regis');
-  }
 }

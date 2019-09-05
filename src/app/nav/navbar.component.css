@@ -4,3 +4,13 @@
 #searchForm {
   margin-right: 100px;
 }
+
+@media (max-width: 1200px) {
+  #searchForm {
+    display: none;
+  }
+}
+
+li > a.router-link-active {
+  color: #f97924;
+}

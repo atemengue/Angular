@@ -8,6 +8,7 @@ import { EventsAppComponent } from './events-app.component';
 import { CreateEventComponent } from './events/create-event.component';
 import { EventDetailsComponent } from './events/event-details/event-details.component';
 import { EventRouteActivator } from './events/event-details/event-route-activator.service';
+import { EventListResolver } from './events/event-list-resolver.service';
 import { EventThumbnailComponent } from './events/event-thumbnail.component';
 import { EventsListComponent } from './events/events-list.component';
 import { EventService } from './events/shared/event.service';
@@ -24,7 +25,12 @@ import { NavbarComponent } from './nav/navbar.component';
     Error404Component
   ],
   imports: [BrowserModule, RouterModule.forRoot(appRoutes)],
-  providers: [EventService, ToastrService, EventRouteActivator],
+  providers: [
+    EventService,
+    ToastrService,
+    EventRouteActivator,
+    EventListResolver
+  ],
   bootstrap: [EventsAppComponent]
 })
 export class AppModule {}

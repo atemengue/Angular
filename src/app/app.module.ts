@@ -7,6 +7,7 @@ import { ToastrService } from './common/toastr.service';
 import { Error404Component } from './errors/error404.component';
 import { EventsAppComponent } from './events-app.component';
 import { CreateEventComponent } from './events/create-event.component';
+import { CreateSessionComponent } from './events/event-details/create-session.component';
 import { EventDetailsComponent } from './events/event-details/event-details.component';
 import { EventRouteActivator } from './events/event-details/event-route-activator.service';
 import { EventListResolver } from './events/event-list-resolver.service';
@@ -24,7 +25,8 @@ import { AuthService } from './user/auth.service';
     NavbarComponent,
     EventDetailsComponent,
     CreateEventComponent,
-    Error404Component
+    Error404Component,
+    CreateSessionComponent
   ],
   imports: [
     BrowserModule,

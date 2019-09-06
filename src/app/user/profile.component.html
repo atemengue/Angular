@@ -8,15 +8,9 @@
       autocomplete="off"
       novalidate
     >
-      <div
-        class="form-group"
-        [ngClass]="{
-          error:
-            profileForm.controls.firstName.invalid &&
-            profileForm.controls.firstName.touched
-        }"
-      >
+      <div class="form-group" [ngClass]="{ error: !validateFirstName() }">
         <label for="firstName">First Name:</label>
+        <em *ngIf="!validateFirstName()">Required</em>
         <input
           formControlName="firstName"
           id="firstName"
@@ -25,15 +19,9 @@
           placeholder="First Name..."
         />
       </div>
-      <div
-        class="form-group"
-        [ngClass]="{
-          error:
-            profileForm.controls.lastName.invalid &&
-            profileForm.controls.lastName.touched
-        }"
-      >
+      <div class="form-group" [ngClass]="{ error: !validateLastName() }">
         <label for="lastName">Last Name:</label>
+        <em *ngIf="!validateLastName()">Required</em>
         <input
           formControlName="lastName"
           id="lastName"

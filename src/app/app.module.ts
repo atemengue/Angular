@@ -13,6 +13,7 @@ import { EventThumbnailComponent } from './events/event-thumbnail.component';
 import { EventsListComponent } from './events/events-list.component';
 import { EventService } from './events/shared/event.service';
 import { NavbarComponent } from './nav/navbar.component';
+import { AuthService } from './user/auth.service';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { NavbarComponent } from './nav/navbar.component';
   imports: [BrowserModule, RouterModule.forRoot(appRoutes)],
   providers: [
     EventService,
+    AuthService,
     ToastrService,
     EventRouteActivator,
     EventListResolver

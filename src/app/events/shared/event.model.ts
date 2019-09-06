@@ -18,7 +18,7 @@ export interface Isession {
   id: number;
   name: string;
   presenter: string;
-  duratin: number;
+  duration: number;
   level: string;
   abstract: string;
   voters: string[];

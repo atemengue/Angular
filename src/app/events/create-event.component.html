@@ -24,7 +24,7 @@
         >Required</em
       >
       <input
-        (ngModel)="(newEvent.name)"
+        [(ngModel)]="newEvent.name"
         name="name"
         required
         id="name"
@@ -50,7 +50,7 @@
         >Required</em
       >
       <input
-        (ngModel)="(newEvent.date)"
+        [(ngModel)]="newEvent.date"
         name="date"
         required
         id="eventDate"
@@ -76,7 +76,7 @@
         >Required</em
       >
       <input
-        (ngModel)="(newEvent.time)"
+        [(ngModel)]="newEvent.time"
         name="time"
         required
         id="eventTime"
@@ -102,7 +102,7 @@
         >Required</em
       >
       <input
-        (ngModel)="(newEvent.price)"
+        [(ngModel)]="newEvent.price"
         name="price"
         required
         id="eventPrice"
@@ -117,7 +117,7 @@
       <div class="form-group">
         <label for="address">Event Location:</label>
         <input
-          (ngModel)="(newEvent.address)"
+          [(ngModel)]="newEvent.location.address"
           name="address"
           id="address"
           type="text"
@@ -128,7 +128,7 @@
       <div class="row">
         <div class="col-md-6">
           <input
-            (ngModel)="(newEvent.city)"
+            [(ngModel)]="newEvent.location.city"
             name="city"
             id="city"
             type="text"
@@ -138,7 +138,7 @@
         </div>
         <div class="col-md-6">
           <input
-            (ngModel)="(newEvent.country)"
+            [(ngModel)]="newEvent.location.country"
             name="country"
             id="country"
             type="text"
@@ -152,7 +152,7 @@
     <div class="form-group">
       <label for="onlineUrl">Online Url:</label>
       <input
-        (ngModel)="(newEvent.onlineUrl)"
+        [(ngModel)]="newEvent.onlineUrl"
         name="onlineUrl"
         id="onlineUrl"
         type="text"
@@ -186,7 +186,7 @@
         >Must be a png or jpg url</em
       >
       <input
-        (ngModel)="(newEvent.imageUrl)"
+        [(ngModel)]="newEvent.imageUrl"
         name="imageUrl"
         required
         pattern=".*\/.*.(png|jpg)"

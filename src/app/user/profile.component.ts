@@ -1,27 +1,32 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { AuthService } from './auth.service';
+import { Component, OnInit, Inject } from "@angular/core";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
+import { AuthService } from "./auth.service";
+import { TOASTR_TOKEN, Toastr } from "../common/toastr.service";
 
 @Component({
-  selector: 'app-profile',
-  templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  selector: "app-profile",
+  templateUrl: "./profile.component.html",
+  styleUrls: ["./profile.component.css"]
 })
 export class ProfileComponent implements OnInit {
   profileForm: FormGroup;
   private firstName: FormControl;
   private lastName: FormControl;
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    @Inject(TOASTR_TOKEN) private toastr: Toastr
+  ) {}
 
   ngOnInit() {
     this.firstName = new FormControl(this.authService.currentUser.firstName, [
       Validators.required,
-      Validators.pattern('[a-zA-Z]*')
+      Validators.pattern("[a-zA-Z]*")
     ]);
     this.lastName = new FormControl(this.authService.currentUser.lastName, [
       Validators.required,
-      Validators.pattern('[a-zA-Z]*')
+      Validators.pattern("[a-zA-Z]*")
     ]);
     this.profileForm = new FormGroup({
       firstName: this.firstName,
@@ -35,7 +40,8 @@ export class ProfileComponent implements OnInit {
         formValues.firstName,
         formValues.lastName
       );
-      this.router.navigate(['events']);
+      this.toastr.success("Profile Saved");
+      // this.router.navigate(["events"]);
     }
   }
 
@@ -48,6 +54,6 @@ export class ProfileComponent implements OnInit {
   }
 
   cancel() {
-    this.router.navigate(['events']);
+    this.router.navigate(["events"]);
   }
 }

@@ -6,7 +6,7 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule } from "@angular/router";
 import { appRoutes } from "src/routes";
-import { ToastrService } from "./common/toastr.service";
+import { TOASTR_TOKEN, Toastr } from "./common/toastr.service";
 import { Error404Component } from "./errors/error404.component";
 import { EventsAppComponent } from "./events-app.component";
 import { CreateEventComponent } from "./events/create-event.component";
@@ -20,6 +20,7 @@ import { EventService } from "./events/shared/event.service";
 import { NavbarComponent } from "./nav/navbar.component";
 import { AuthService } from "./user/auth.service";
 
+let toastr: Toastr = window["toastr"];
 @NgModule({
   declarations: [
     EventsAppComponent,
@@ -43,7 +44,7 @@ import { AuthService } from "./user/auth.service";
   providers: [
     EventService,
     AuthService,
-    ToastrService,
+    { provide: TOASTR_TOKEN, useValue: toastr },
     EventRouteActivator,
     EventListResolver
   ],

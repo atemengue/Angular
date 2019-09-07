@@ -1,3 +1,4 @@
+import { DurationPipe } from "./events/shared/duration.pipe";
 import { CollapsibleWellComponent } from "./common/collapsible-well.component";
 import { SessionListComponent } from "./events/event-details/session-list.compoment";
 import { NgModule } from "@angular/core";
@@ -30,7 +31,8 @@ import { AuthService } from "./user/auth.service";
     Error404Component,
     CreateSessionComponent,
     SessionListComponent,
-    CollapsibleWellComponent
+    CollapsibleWellComponent,
+    DurationPipe
   ],
   imports: [
     BrowserModule,

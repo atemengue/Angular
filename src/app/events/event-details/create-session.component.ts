@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Isession } from './../shared/event.model';
+import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { Isession } from "./../shared/event.model";
 @Component({
-  selector: 'app-create-session',
-  templateUrl: './create-session.component.html',
-  styleUrls: ['./create-session.component.css']
+  selector: "create-session",
+  templateUrl: "./create-session.component.html",
+  styleUrls: ["./create-session.component.css"]
 })
 export class CreateSessionComponent implements OnInit {
+  @Output() saveNewSession = new EventEmitter();
+  @Output() cancelAddSession = new EventEmitter();
   newSessionForm: FormGroup;
   name: FormControl;
   presenter: FormControl;
@@ -17,14 +19,14 @@ export class CreateSessionComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    this.name = new FormControl('', Validators.required);
-    this.presenter = new FormControl('', Validators.required);
-    this.level = new FormControl('', Validators.required);
-    this.duration = new FormControl('', Validators.required);
-    this.abstract = new FormControl('', [
+    this.name = new FormControl("", Validators.required);
+    this.presenter = new FormControl("", Validators.required);
+    this.level = new FormControl("", Validators.required);
+    this.duration = new FormControl("", Validators.required);
+    this.abstract = new FormControl("", [
       Validators.required,
       Validators.maxLength(400),
-      this.restrictedWords(['foo', 'bar'])
+      this.restrictedWords(["foo", "bar"])
     ]);
 
     this.newSessionForm = new FormGroup({
@@ -43,7 +45,7 @@ export class CreateSessionComponent implements OnInit {
         .filter(w => w != null);
 
       return invalidWords && invalidWords.length > 0
-        ? { restrictedWords: invalidWords.join(',') }
+        ? { restrictedWords: invalidWords.join(",") }
         : null;
       // return control.value.includes('foo') ? { restrictedWords: 'foo' } : null;
     };
@@ -58,6 +60,10 @@ export class CreateSessionComponent implements OnInit {
       abstract: formValues.abstract,
       voters: []
     };
-    console.log(session);
+    // console.log(session);
+    this.saveNewSession.emit(session);
+  }
+  cancel() {
+    this.cancelAddSession.emit();
   }
 }

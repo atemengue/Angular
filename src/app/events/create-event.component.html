@@ -113,9 +113,12 @@
       />
     </div>
 
-    <div ngModelGroup="location">
+    <div ngModelGroup="location" #locationGroup="ngModelGroup" validateLocation>
       <div class="form-group">
         <label for="address">Event Location:</label>
+        <em *ngIf="locationGroup?.invalid && locationGroup?.touched">
+          You must enter either the full location OR an online URL
+        </em>
         <input
           [(ngModel)]="newEvent.location.address"
           name="address"
@@ -158,6 +161,9 @@
         type="text"
         class="form-control"
         placeholder="Online Url..."
+        (change)="
+          locationGroup.control.controls.address.updateValueAndValidity()
+        "
       />
     </div>
     <div
@@ -200,13 +206,14 @@
       <img />
     </div>
 
-    <button type="submit" class="btn btn-primary">Save</button>
     <button
-      type="button"
+      type="submit"
+      class="btn btn-primary"
       [disabled]="newEventForm.invalid"
-      class="btn btn-default"
-      (click)="cancel()"
     >
+      Save
+    </button>
+    <button type="button" class="btn btn-default" (click)="cancel()">
       Cancel
     </button>
   </form>

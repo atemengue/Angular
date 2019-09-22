@@ -1,3 +1,4 @@
+import { LocationValidator } from "./events/location-validator.directive";
 import { DurationPipe } from "./events/shared/duration.pipe";
 import { SessionListComponent } from "./events/event-details/session-list.compoment";
 import { NgModule } from "@angular/core";
@@ -24,8 +25,8 @@ import { EventsListComponent } from "./events/events-list.component";
 import { EventService } from "./events/shared/event.service";
 import { NavbarComponent } from "./nav/navbar.component";
 import { AuthService } from "./user/auth.service";
-import { ModalTriggerDirective } from './common/modal-trigger.directive';
-import { UpvoteComponent } from './events/event-details/upvote.component';
+import { ModalTriggerDirective } from "./common/modal-trigger.directive";
+import { UpvoteComponent } from "./events/event-details/upvote.component";
 
 let toastr: Toastr = window["toastr"];
 let jQuery = window["$"];
@@ -44,6 +45,7 @@ let jQuery = window["$"];
     SimpleModalComponent,
     DurationPipe,
     ModalTriggerDirective,
+    LocationValidator,
     UpvoteComponent
   ],
   imports: [

@@ -25,6 +25,7 @@ import { EventService } from "./events/shared/event.service";
 import { NavbarComponent } from "./nav/navbar.component";
 import { AuthService } from "./user/auth.service";
 import { ModalTriggerDirective } from './common/modal-trigger.directive';
+import { UpvoteComponent } from './events/event-details/upvote.component';
 
 let toastr: Toastr = window["toastr"];
 let jQuery = window["$"];
@@ -42,7 +43,8 @@ let jQuery = window["$"];
     CollapsibleWellComponent,
     SimpleModalComponent,
     DurationPipe,
-    ModalTriggerDirective
+    ModalTriggerDirective,
+    UpvoteComponent
   ],
   imports: [
     BrowserModule,
